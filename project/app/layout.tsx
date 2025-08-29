@@ -4,30 +4,29 @@ import { Inter } from 'next/font/google';
 import { AuthProvider } from '@/contexts/AuthContext';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import { Header } from '@/components/layout/Header';
+import { Toaster } from '@/components/ui/toaster';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'CareerAI - AI-Powered Career & Skill Advisor',
-  description: 'Transform your career with AI-powered guidance, skill development, and personalized coaching.',
-  keywords: 'career development, AI coaching, skill assessment, resume optimization, job search',
-  authors: [{ name: 'CareerAI Team' }],
+  title: 'CareerForge Pro - AI-Powered Career Development Platform',
+  description: 'Transform your career with AI-powered assessments, personalized learning paths, and professional development tools.',
+  keywords: 'career development, AI assessment, learning platform, professional growth, skill development',
+  authors: [{ name: 'CareerForge Pro Team' }],
+  creator: 'CareerForge Pro',
+  publisher: 'CareerForge Pro',
+  robots: 'index, follow',
   openGraph: {
-    title: 'CareerAI - AI-Powered Career & Skill Advisor',
-    description: 'Transform your career with AI-powered guidance, skill development, and personalized coaching.',
+    title: 'CareerForge Pro - AI-Powered Career Development Platform',
+    description: 'Transform your career with AI-powered assessments, personalized learning paths, and professional development tools.',
     type: 'website',
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CareerAI - AI-Powered Career & Skill Advisor',
-    description: 'Transform your career with AI-powered guidance, skill development, and personalized coaching.',
+    title: 'CareerForge Pro - AI-Powered Career Development Platform',
+    description: 'Transform your career with AI-powered assessments, personalized learning paths, and professional development tools.',
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  viewport: 'width=device-width, initial-scale=1',
 };
 
 export default function RootLayout({
@@ -42,6 +41,7 @@ export default function RootLayout({
           <AuthProvider>
             <Header />
             <main>{children}</main>
+            <Toaster />
           </AuthProvider>
         </ThemeProvider>
       </body>

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { useRouter } from 'next/navigation';
 import { 
   Brain, 
   Target, 
@@ -18,38 +19,58 @@ import {
 } from 'lucide-react';
 
 export default function LandingPage() {
+  const router = useRouter();
+
   const features = [
     {
       icon: Brain,
       title: "AI Career Assessment",
-      description: "Discover your perfect career path with advanced personality and skills analysis"
+      description: "Discover your perfect career path with advanced personality and skills analysis",
+      color: "from-blue-500 to-purple-600"
     },
     {
       icon: Target,
       title: "Skill Development",
-      description: "Personalized learning paths with real-time progress tracking and AI coaching"
+      description: "Personalized learning paths with real-time progress tracking and AI coaching",
+      color: "from-emerald-500 to-teal-600"
     },
     {
       icon: FileText,
       title: "ATS Resume Optimizer",
-      description: "Optimize your resume for applicant tracking systems with AI-powered insights"
+      description: "Optimize your resume for applicant tracking systems with AI-powered insights",
+      color: "from-orange-500 to-red-600"
     },
     {
       icon: Users,
       title: "Community & Mentorship",
-      description: "Connect with peers and industry experts for guidance and networking"
+      description: "Connect with peers and industry experts for guidance and networking",
+      color: "from-purple-500 to-pink-600"
     },
     {
       icon: BarChart3,
       title: "Career Analytics",
-      description: "Track your career health and get AI-powered growth recommendations"
+      description: "Track your career health and get AI-powered growth recommendations",
+      color: "from-indigo-500 to-blue-600"
     },
     {
       icon: Zap,
       title: "Real-time Market Intelligence",
-      description: "Stay ahead with live job market trends and salary forecasts"
+      description: "Stay ahead with live job market trends and salary forecasts",
+      color: "from-yellow-500 to-orange-600"
     }
   ];
+
+  const handleStartAssessment = () => {
+    router.push('/assessment');
+  };
+
+  const handleWatchDemo = () => {
+    router.push('/dashboard');
+  };
+
+  const handleGetStarted = () => {
+    router.push('/auth/signup');
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -63,7 +84,7 @@ export default function LandingPage() {
             transition={{ duration: 0.8 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <Badge className="mb-4 bg-white/10 text-white border-white/20">
+            <Badge className="mb-4 bg-white/10 text-white border-white/20 backdrop-blur-sm">
               🚀 AI-Powered Career Intelligence
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
@@ -76,10 +97,19 @@ export default function LandingPage() {
               Discover your perfect career path, develop essential skills, and accelerate your professional growth with personalized AI coaching.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 text-lg">
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-8 py-3 text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                onClick={handleStartAssessment}
+              >
                 Start Free Assessment
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-900 px-8 py-3 text-lg">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-white text-white hover:bg-white hover:text-blue-900 px-8 py-3 text-lg backdrop-blur-sm hover:shadow-lg transform hover:scale-105 transition-all duration-200"
+                onClick={handleWatchDemo}
+              >
                 Watch Demo
               </Button>
             </div>
@@ -115,14 +145,17 @@ export default function LandingPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="group"
                 >
-                  <Card className="h-full hover:shadow-lg transition-shadow duration-300">
-                    <CardContent className="p-6">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-teal-500 rounded-lg flex items-center justify-center mb-4">
+                  <Card className="h-full hover:shadow-2xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
+                    <CardContent className="p-6 relative">
+                      <div className={`w-12 h-12 bg-gradient-to-br ${feature.color} rounded-lg flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-200`}>
                         <Icon className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
+                      <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">{feature.title}</h3>
                       <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                      <div className="absolute inset-0 bg-gradient-to-br from-transparent to-white/5 dark:to-gray-700/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -137,10 +170,10 @@ export default function LandingPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { number: '100K+', label: 'Career Assessments' },
-              { number: '95%', label: 'Success Rate' },
-              { number: '50+', label: 'Industries Covered' },
-              { number: '24/7', label: 'AI Support' }
+              { number: '100K+', label: 'Career Assessments', color: 'text-blue-600' },
+              { number: '95%', label: 'Success Rate', color: 'text-emerald-600' },
+              { number: '50+', label: 'Industries Covered', color: 'text-orange-600' },
+              { number: '24/7', label: 'AI Support', color: 'text-purple-600' }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -148,8 +181,10 @@ export default function LandingPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                whileHover={{ scale: 1.05 }}
+                className="group"
               >
-                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
+                <div className={`text-3xl md:text-4xl font-bold ${stat.color} mb-2 group-hover:scale-110 transition-transform duration-200`}>
                   {stat.number}
                 </div>
                 <div className="text-muted-foreground">{stat.label}</div>
@@ -175,7 +210,11 @@ export default function LandingPage() {
             <p className="text-xl text-blue-100 mb-8">
               Join thousands of professionals who have accelerated their careers with AI-powered insights.
             </p>
-            <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white px-12 py-4 text-lg">
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-12 py-4 text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+              onClick={handleGetStarted}
+            >
               Get Started Free
             </Button>
           </motion.div>
