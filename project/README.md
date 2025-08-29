@@ -1,219 +1,246 @@
-# 🚀 CareerForge Pro - AI-Powered Career Development Platform
+# CareerForge Pro - AI-Powered Career Development Platform
 
-A modern, responsive web application built with Next.js 13, featuring AI-powered career assessments, personalized learning paths, and professional development tools with beautiful liquid glass morphism effects.
+A comprehensive career development platform built with Next.js, TypeScript, and Tailwind CSS, featuring AI-powered learning paths, skill assessments, and career tools.
 
-## ✨ Features
+## 🚀 Features
 
-### 🎯 Core Functionality
-- **AI-Powered Career Assessment** - Comprehensive skill evaluation and career guidance
-- **Personalized Learning Paths** - Customized courses based on your career goals
-- **Skill Gap Analysis** - Identify areas for improvement and growth
-- **Progress Tracking** - Monitor your learning journey with detailed analytics
-- **Goal Setting & Management** - Set and track career objectives
+### Core Features
+- **AI-Powered Learning Paths** - Personalized learning recommendations based on career goals
+- **Skill Assessment Engine** - Comprehensive skill evaluation and gap analysis
+- **Resume Optimization** - ATS-compatible resume builder with AI suggestions
+- **Career Analytics** - Detailed insights into career progress and development
 - **Community & Networking** - Connect with professionals and mentors
+- **Goal Setting & Tracking** - Set and monitor career development goals
 
-### 🎨 Modern UI/UX
-- **Liquid Glass Morphism** - Beautiful backdrop blur effects and transparency
-- **Responsive Design** - Optimized for all devices and screen sizes
-- **Dark/Light Theme** - Toggle between themes with smooth transitions
-- **Smooth Animations** - Framer Motion powered interactions
-- **Gradient Design** - Modern color schemes and visual hierarchy
+### New Features Added
+- **Continue Learning Section** - Enhanced learning page with current module tracking
+- **Leadership Development Course** - Comprehensive leadership skills curriculum
+- **Career Calendar** - Interactive calendar for managing career events and deadlines
+- **Notifications System** - Centralized notification management
+- **Recent Activity Tracking** - Timeline view of career development activities
+- **Upcoming Events** - Discover and register for career development events
+- **Achievement Calendar** - Track milestones and celebrate accomplishments
+- **Enhanced Dashboard** - Improved overview with quick access to all features
 
-### 🔐 Authentication & Security
-- **Protected Routes** - Middleware-based authentication
-- **User Management** - Secure login, registration, and profile management
-- **Session Handling** - Cookie-based authentication tokens
-- **Route Protection** - Automatic redirects for unauthenticated users
+## 📱 Pages
 
-## 🛠️ Tech Stack
+### Main Pages
+- `/` - Landing page with feature overview
+- `/dashboard` - Main dashboard with progress overview
+- `/learning` - Learning hub with continue learning section
+- `/skills` - Skill assessment and badge management
+- `/assessment` - Career assessment tools
+- `/job-tools` - Resume builder and job search tools
+- `/community` - Professional networking and discussions
+- `/analytics` - Career development analytics and reports
+- `/profile` - User profile and settings
 
-### Frontend
-- **Next.js 13** - React framework with App Router
-- **TypeScript** - Type-safe development
-- **Tailwind CSS** - Utility-first CSS framework
-- **Framer Motion** - Animation library
-- **Radix UI** - Accessible component primitives
+### New Pages Added
+- `/learning/leadership` - Leadership development course
+- `/calendar` - Career development calendar view
+- `/notifications` - Notification management center
+- `/activity` - Recent activity timeline
+- `/events` - Upcoming events and workshops
+- `/achievements` - Achievement tracking and calendar
+- `/goals/new` - Goal setting and management
 
-### Backend & Services
-- **Firebase** - Authentication and backend services
-- **Next.js API Routes** - Server-side functionality
-- **Middleware** - Route protection and authentication
+### Learning Courses
+- `/learning/data-science` - Data science mastery course
+- `/learning/courses/[courseId]` - Individual course pages
+- `/learning/continue` - Continue learning interface
 
-### Development Tools
-- **ESLint** - Code linting and quality
-- **Prettier** - Code formatting
-- **TypeScript** - Static type checking
+## 🛠️ Technology Stack
+
+- **Frontend**: Next.js 14, React 18, TypeScript
+- **Styling**: Tailwind CSS, Framer Motion
+- **UI Components**: Shadcn/ui component library
+- **Authentication**: Firebase Authentication
+- **Database**: Firebase Firestore
+- **Deployment**: Vercel (recommended)
+
+## 🎨 Design Features
+
+- **Dark/Light Theme** - Toggle between themes with persistent state
+- **Glass Morphism** - Modern UI with backdrop blur effects
+- **Responsive Design** - Mobile-first approach with tablet and desktop optimization
+- **Smooth Animations** - Framer Motion animations for enhanced UX
+- **Gradient Accents** - Beautiful gradient color schemes throughout
+- **Indian Rupee Pricing** - All prices displayed in ₹ (rupees)
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 - Node.js 18+ 
 - npm or yarn
-- Firebase project (optional for demo mode)
+- Firebase project setup
 
 ### Installation
 
-1. **Clone the repository**
+1. Clone the repository:
    ```bash
-   git clone https://github.com/Vaibhav14102006/carrer-ai.git
-   cd carrer-ai
+git clone <repository-url>
+cd project
    ```
 
-2. **Install dependencies**
+2. Install dependencies:
    ```bash
    npm install
    # or
    yarn install
    ```
 
-3. **Environment Setup**
-   Create a `.env.local` file in the root directory:
-   ```env
-   NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
-   NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_auth_domain
-   NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
-   NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_storage_bucket
-   NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-   NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
-   ```
+3. Set up environment variables:
+```bash
+cp .env.example .env.local
+```
 
-4. **Run the development server**
+4. Configure Firebase:
+- Create a Firebase project
+- Add your Firebase config to `.env.local`
+- Enable Authentication and Firestore
+
+5. Run the development server:
    ```bash
    npm run dev
    # or
    yarn dev
    ```
 
-5. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+6. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 📁 Project Structure
 
 ```
-careerforge-pro/
-├── app/                    # Next.js 13 App Router
+project/
+├── app/                    # Next.js app directory
+│   ├── (auth)/            # Authentication pages
 │   ├── analytics/         # Analytics dashboard
-│   ├── assessment/        # Career assessment tools
-│   ├── auth/             # Authentication pages
+│   ├── assessment/        # Assessment tools
+│   ├── calendar/          # Career calendar
 │   ├── community/         # Community features
 │   ├── dashboard/         # Main dashboard
-│   ├── goals/            # Goal setting and tracking
-│   ├── job-tools/        # Resume and job tools
-│   ├── learning/         # Learning platform
-│   ├── skills/           # Skills development
-│   └── layout.tsx        # Root layout
-├── components/            # Reusable components
+│   ├── events/            # Upcoming events
+│   ├── goals/             # Goal management
+│   ├── job-tools/         # Career tools
+│   ├── learning/          # Learning platform
+│   ├── notifications/     # Notification center
+│   ├── profile/           # User profile
+│   ├── skills/            # Skills management
+│   └── activity/          # Recent activity
+├── components/            # Reusable UI components
+│   ├── ui/               # Base UI components
 │   ├── auth/             # Authentication components
 │   ├── dashboard/        # Dashboard components
-│   ├── layout/           # Layout components
-│   └── ui/               # UI component library
+│   ├── job-tools/        # Job tools components
+│   └── layout/           # Layout components
 ├── contexts/             # React contexts
 ├── hooks/                # Custom React hooks
 ├── lib/                  # Utility functions
-├── middleware.ts         # Next.js middleware
 └── public/               # Static assets
 ```
 
-## 🎨 Component Library
+## 🔧 Configuration
 
-### Glass Morphism Components
-- `GlassCard` - Versatile glass effect container
-- `GlassButton` - Interactive glass buttons
-- `GlassInput` - Styled form inputs
-- `GlassBadge` - Glass effect badges
+### Environment Variables
+```env
+NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_auth_domain
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
+```
 
-### UI Components
-- Responsive navigation
-- Interactive charts and graphs
-- Form components
-- Modal dialogs
-- Progress indicators
-
-## 🔐 Authentication Flow
-
-1. **Public Routes** - Landing page, sign in/up
-2. **Protected Routes** - Dashboard, learning, skills, etc.
-3. **Middleware Protection** - Automatic redirects
-4. **Token Management** - Secure cookie-based auth
-
-## 📱 Responsive Design
-
-- **Mobile First** - Optimized for mobile devices
-- **Tablet Support** - Responsive layouts for tablets
-- **Desktop Experience** - Enhanced features for larger screens
-- **Touch Friendly** - Optimized touch interactions
+### Tailwind Configuration
+The project uses a custom Tailwind configuration with:
+- Extended color palette
+- Custom animations
+- Responsive breakpoints
+- Dark mode support
 
 ## 🎯 Key Features Implementation
 
-### Learning Platform
-- Course catalog with detailed pages
-- Progress tracking and analytics
-- Interactive learning paths
-- Module-based content structure
-
-### Career Assessment
-- Multi-dimensional skill evaluation
-- Personalized recommendations
+### Continue Learning
+- Current module tracking
 - Progress visualization
-- Goal-oriented development plans
+- Quick action buttons
+- Course statistics
 
-### Dashboard Analytics
-- Real-time progress tracking
-- Skill development charts
-- Career health metrics
-- Achievement badges
+### Leadership Development
+- Comprehensive curriculum
+- Progress tracking
+- Interactive modules
+- Achievement system
+
+### Career Calendar
+- Monthly view navigation
+- Event management
+- Priority-based organization
+- Quick actions
+
+### Notifications
+- Type-based categorization
+- Priority levels
+- Read/unread status
+- Filtering and search
+
+### Activity Tracking
+- Timeline visualization
+- Impact assessment
+- Category organization
+- Progress metrics
+
+### Events Management
+- Event discovery
+- Registration system
+- Category filtering
+- Search functionality
+
+### Achievement System
+- Badge collection
+- Progress tracking
+- Milestone celebration
+- Leaderboard integration
 
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
-1. Connect your GitHub repository
+1. Connect your GitHub repository to Vercel
 2. Configure environment variables
 3. Deploy automatically on push
 
 ### Other Platforms
-- **Netlify** - Static site hosting
-- **AWS Amplify** - Full-stack hosting
-- **DigitalOcean** - VPS deployment
+- Netlify
+- Railway
+- DigitalOcean App Platform
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🙏 Acknowledgments
 
-- **Next.js Team** - For the amazing framework
-- **Tailwind CSS** - For the utility-first CSS approach
-- **Framer Motion** - For smooth animations
-- **Radix UI** - For accessible components
-- **Firebase** - For backend services
+- Shadcn/ui for the component library
+- Framer Motion for animations
+- Tailwind CSS for styling
+- Next.js team for the framework
+- Firebase for backend services
 
 ## 📞 Support
 
-- **Issues** - Report bugs and feature requests
-- **Discussions** - Ask questions and share ideas
-- **Email** - Contact the development team
-
-## 🔮 Future Roadmap
-
-- [ ] AI-powered career recommendations
-- [ ] Advanced analytics and insights
-- [ ] Mobile app development
-- [ ] Integration with job platforms
-- [ ] Advanced assessment algorithms
-- [ ] Community features enhancement
-- [ ] Multi-language support
-- [ ] Advanced reporting tools
+For support and questions:
+- Create an issue in the repository
+- Contact the development team
+- Check the documentation
 
 ---
 
-**Built with ❤️ by the CareerForge Pro Team**
-
-Transform your career with AI-powered guidance and beautiful, modern design.
+**CareerForge Pro** - Empowering your career journey with AI-powered insights and tools.

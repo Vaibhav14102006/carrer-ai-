@@ -14,7 +14,13 @@ import {
   Target,
   TrendingUp,
   Star,
-  Zap
+  Zap,
+  Brain,
+  CheckCircle,
+  Video,
+  FileText,
+  Code,
+  Database
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -80,8 +86,15 @@ export default function LearningPage() {
 
   const categories = ['All', 'Technology', 'Soft Skills', 'Marketing', 'Business', 'Design'];
 
+  const currentModule = {
+    title: 'Advanced ML Algorithms',
+    description: 'Deep dive into advanced machine learning techniques',
+    progress: 45,
+    color: 'from-orange-500 to-red-500'
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-black dark:via-neutral-950 dark:to-black">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-black dark:via-black dark:to-black">
       {/* Hero Section with Glass Morphism */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
@@ -111,6 +124,108 @@ export default function LearningPage() {
               </div>
             </div>
           </motion.div>
+        </div>
+      </div>
+
+      {/* Continue Learning Section */}
+      <div className="container mx-auto px-4 py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+            Continue Learning
+          </h2>
+          <p className="text-xl text-muted-foreground">
+            Pick up where you left off in your learning journey
+          </p>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-3 gap-8 mb-20">
+          {/* Main Content */}
+          <div className="lg:col-span-2">
+            <Card className="backdrop-blur-xl bg-white/20 dark:bg-gray-900/20 border-white/30 dark:border-gray-700/30 shadow-xl">
+              <CardHeader>
+                <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white">Current Module</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="text-center">
+                  <div className={`w-16 h-16 bg-gradient-to-br ${currentModule.color} rounded-xl mx-auto mb-4 flex items-center justify-center`}>
+                    <Target className="w-8 h-8 text-white" />
+                  </div>
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">{currentModule.title}</h4>
+                  <p className="text-sm text-muted-foreground mb-3">{currentModule.description}</p>
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">Progress</span>
+                      <span className="font-medium">{currentModule.progress}%</span>
+                    </div>
+                    <Progress value={currentModule.progress} className="h-2" />
+                  </div>
+                </div>
+                <Button className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white">
+                  <Play className="w-4 h-4 mr-2" />
+                  Continue Learning
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Sidebar */}
+          <div className="space-y-6">
+            {/* Course Stats */}
+            <Card className="backdrop-blur-xl bg-white/20 dark:bg-gray-900/20 border-white/30 dark:border-gray-700/30 shadow-xl">
+              <CardHeader>
+                <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">Course Statistics</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div className="p-3 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
+                    <div className="text-2xl font-bold text-blue-600">65%</div>
+                    <div className="text-sm text-muted-foreground">Complete</div>
+                  </div>
+                  <div className="p-3 bg-green-50 dark:bg-green-950/20 rounded-lg">
+                    <div className="text-2xl font-bold text-green-600">3/8</div>
+                    <div className="text-sm text-muted-foreground">Modules</div>
+                  </div>
+                  <div className="p-3 bg-purple-50 dark:bg-purple-950/20 rounded-lg">
+                    <div className="text-2xl font-bold text-purple-600">45</div>
+                    <div className="text-sm text-muted-foreground">Lessons</div>
+                  </div>
+                  <div className="p-3 bg-orange-50 dark:bg-orange-950/20 rounded-lg">
+                    <div className="text-2xl font-bold text-orange-600">2.5</div>
+                    <div className="text-sm text-muted-foreground">Weeks Left</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Quick Actions */}
+            <Card className="backdrop-blur-xl bg-white/20 dark:bg-gray-900/20 border-white/30 dark:border-gray-700/30 shadow-xl">
+              <CardHeader>
+                <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">Quick Actions</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <Button variant="outline" className="w-full justify-start">
+                  <Video className="w-4 h-4 mr-2" />
+                  Watch Latest Video
+                </Button>
+                <Button variant="outline" className="w-full justify-start">
+                  <FileText className="w-4 h-4 mr-2" />
+                  Download Resources
+                </Button>
+                <Button variant="outline" className="w-full justify-start">
+                  <Code className="w-4 h-4 mr-2" />
+                  Practice Exercises
+                </Button>
+                <Button variant="outline" className="w-full justify-start">
+                  <Database className="w-4 h-4 mr-2" />
+                  Access Datasets
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
 

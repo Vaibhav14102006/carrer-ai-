@@ -61,6 +61,10 @@ export function Header() {
     { name: 'Analytics', href: '/analytics' },
     { name: 'Community', href: '/community' },
     { name: 'Job Tools', href: '/job-tools' },
+    { name: 'Calendar', href: '/calendar' },
+    { name: 'Events', href: '/events' },
+    { name: 'Activity', href: '/activity' },
+    { name: 'Achievements', href: '/achievements' },
   ];
 
   if (!mounted) {
@@ -127,9 +131,11 @@ export function Header() {
           </Button>
 
           {/* Notifications */}
-          <Button variant="ghost" size="sm" className="w-9 h-9 p-0">
-            <Bell className="h-4 w-4" />
-            <span className="sr-only">Notifications</span>
+          <Button variant="ghost" size="sm" className="w-9 h-9 p-0" asChild>
+            <Link href="/notifications">
+              <Bell className="h-4 w-4" />
+              <span className="sr-only">Notifications</span>
+            </Link>
           </Button>
 
           {/* User Menu */}

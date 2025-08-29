@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
 import { StatsCard } from '@/components/dashboard/StatsCard';
@@ -144,10 +145,12 @@ function DashboardContent() {
             Here's your career development progress and recommendations.
           </p>
         </div>
-        <Button className="bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
-          <Bell className="w-4 h-4 mr-2" />
-          Notifications
-        </Button>
+                      <Button className="bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200" asChild>
+                <Link href="/notifications">
+                  <Bell className="w-4 h-4 mr-2" />
+                  Notifications
+                </Link>
+              </Button>
       </motion.div>
 
       {/* Stats Grid */}
@@ -221,6 +224,9 @@ function DashboardContent() {
               <Calendar className="w-5 h-5" />
               <span>Recent Activity</span>
             </CardTitle>
+            <Button variant="outline" size="sm" className="ml-auto" asChild>
+              <Link href="/activity">View All</Link>
+            </Button>
           </CardHeader>
           <CardContent className="p-6">
             <div className="space-y-4">
@@ -259,6 +265,9 @@ function DashboardContent() {
               <Clock className="w-5 h-5" />
               <span>Upcoming Events</span>
             </CardTitle>
+            <Button variant="outline" size="sm" className="ml-auto" asChild>
+              <Link href="/events">View All</Link>
+            </Button>
           </CardHeader>
           <CardContent className="p-6">
             <div className="space-y-4">
@@ -289,14 +298,16 @@ function DashboardContent() {
                   </div>
                 </motion.div>
               ))}
-              <Button 
-                variant="outline" 
-                className="w-full hover:bg-orange-50 hover:border-orange-300 transition-colors"
-                onClick={handleViewCalendar}
-              >
-                <Calendar className="w-4 h-4 mr-2" />
-                View Full Calendar
-              </Button>
+                                <Button 
+                    variant="outline" 
+                    className="w-full hover:bg-orange-50 hover:border-orange-300 transition-colors"
+                    asChild
+                  >
+                    <Link href="/calendar">
+                      <Calendar className="w-4 h-4 mr-2" />
+                      View Full Calendar
+                    </Link>
+                  </Button>
             </div>
           </CardContent>
         </Card>
