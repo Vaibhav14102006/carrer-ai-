@@ -1,7 +1,4 @@
-'use client';
-
 import { motion } from 'framer-motion';
-import { useParams } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -28,9 +25,27 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 
-export default function CourseDetailPage() {
-  const params = useParams();
-  const courseId = params.courseId as string;
+// Generate static params for all course types
+export async function generateStaticParams() {
+  return [
+    { courseId: 'data-science' },
+    { courseId: 'leadership' },
+    { courseId: 'digital-marketing' },
+    { courseId: 'web-development' },
+    { courseId: 'ai-fundamentals' },
+    { courseId: 'business-strategy' },
+    { courseId: 'ux-design' }
+  ];
+}
+
+interface CourseDetailPageProps {
+  params: {
+    courseId: string;
+  };
+}
+
+export default function CourseDetailPage({ params }: CourseDetailPageProps) {
+  const courseId = params.courseId;
 
   // Course data based on courseId
   const courseData = {
@@ -94,23 +109,102 @@ export default function CourseDetailPage() {
         { title: 'Content Marketing', completed: false, duration: '2 weeks', lessons: 16, color: 'from-purple-500 to-pink-500' },
         { title: 'SEO & Analytics', completed: false, duration: '2 weeks', lessons: 18, color: 'from-orange-500 to-red-500' }
       ]
+    },
+    'web-development': {
+      title: 'Web Development',
+      description: 'Learn full-stack web development with modern technologies',
+      progress: 80,
+      totalModules: 10,
+      completedModules: 8,
+      estimatedTime: '8 weeks',
+      level: 'Advanced',
+      color: 'from-purple-500 to-pink-500',
+      category: 'Technology',
+      rating: 4.9,
+      students: 2103,
+      instructor: 'Alex Johnson',
+      modules: [
+        { title: 'HTML & CSS', completed: true, duration: '1 week', lessons: 10, color: 'from-green-500 to-emerald-500' },
+        { title: 'JavaScript Fundamentals', completed: true, duration: '2 weeks', lessons: 15, color: 'from-blue-500 to-cyan-500' },
+        { title: 'React & Next.js', completed: true, duration: '3 weeks', lessons: 20, color: 'from-purple-500 to-pink-500' },
+        { title: 'Backend Development', completed: false, duration: '2 weeks', lessons: 18, color: 'from-orange-500 to-red-500' }
+      ]
+    },
+    'ai-fundamentals': {
+      title: 'AI Fundamentals',
+      description: 'Master the basics of artificial intelligence and machine learning',
+      progress: 30,
+      totalModules: 6,
+      completedModules: 2,
+      estimatedTime: '4 weeks',
+      level: 'Beginner',
+      color: 'from-indigo-500 to-blue-500',
+      category: 'Technology',
+      rating: 4.9,
+      students: 2341,
+      instructor: 'Dr. Sarah Chen',
+      modules: [
+        { title: 'AI Introduction', completed: true, duration: '1 week', lessons: 8, color: 'from-green-500 to-emerald-500' },
+        { title: 'Machine Learning Basics', completed: true, duration: '1 week', lessons: 12, color: 'from-blue-500 to-cyan-500' },
+        { title: 'Neural Networks', completed: false, duration: '2 weeks', lessons: 16, color: 'from-purple-500 to-pink-500' }
+      ]
+    },
+    'business-strategy': {
+      title: 'Business Strategy',
+      description: 'Develop strategic thinking and business planning skills',
+      progress: 45,
+      totalModules: 5,
+      completedModules: 2,
+      estimatedTime: '3 weeks',
+      level: 'Intermediate',
+      color: 'from-green-500 to-emerald-500',
+      category: 'Business',
+      rating: 4.8,
+      students: 1892,
+      instructor: 'Prof. Michael Brown',
+      modules: [
+        { title: 'Strategic Planning', completed: true, duration: '1 week', lessons: 10, color: 'from-green-500 to-emerald-500' },
+        { title: 'Market Analysis', completed: true, duration: '1 week', lessons: 12, color: 'from-blue-500 to-cyan-500' },
+        { title: 'Competitive Strategy', completed: false, duration: '1 week', lessons: 14, color: 'from-purple-500 to-pink-500' }
+      ]
+    },
+    'ux-design': {
+      title: 'UX Design Mastery',
+      description: 'Learn user experience design principles and tools',
+      progress: 60,
+      totalModules: 7,
+      completedModules: 4,
+      estimatedTime: '5 weeks',
+      level: 'Intermediate',
+      color: 'from-pink-500 to-rose-500',
+      category: 'Design',
+      rating: 4.7,
+      students: 1654,
+      instructor: 'Lisa Rodriguez',
+      modules: [
+        { title: 'Design Principles', completed: true, duration: '1 week', lessons: 10, color: 'from-green-500 to-emerald-500' },
+        { title: 'User Research', completed: true, duration: '1 week', lessons: 12, color: 'from-blue-500 to-cyan-500' },
+        { title: 'Wireframing', completed: true, duration: '1 week', lessons: 14, color: 'from-purple-500 to-pink-500' },
+        { title: 'Prototyping', completed: true, duration: '1 week', lessons: 16, color: 'from-orange-500 to-red-500' },
+        { title: 'User Testing', completed: false, duration: '1 week', lessons: 18, color: 'from-indigo-500 to-purple-500' }
+      ]
     }
   };
 
   const course = courseData[courseId as keyof typeof courseData] || courseData['data-science'];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-blue-900 dark:to-indigo-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-black dark:via-gray-900 dark:to-black">
       {/* Hero Section with Glass Morphism */}
       <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 dark:from-gray-800/20 dark:to-gray-900/20"></div>
         <div className="relative container mx-auto px-4 py-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <div className="backdrop-blur-xl bg-white/10 rounded-3xl p-8 border border-white/20 shadow-2xl">
+            <div className="backdrop-blur-xl bg-white/10 dark:bg-black/20 rounded-3xl p-8 border border-white/20 dark:border-gray-700/30 shadow-2xl">
               <div className="flex justify-center mb-6">
                 <Link href="/learning" className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700 transition-colors">
                   <ArrowLeft className="w-5 h-5" />
@@ -127,13 +221,13 @@ export default function CourseDetailPage() {
                 {course.description}
               </p>
               <div className="flex flex-wrap justify-center gap-4 mb-6">
-                <Badge variant="outline" className="px-4 py-2 text-lg backdrop-blur-sm bg-white/20 border-white/30">
+                <Badge variant="outline" className="px-4 py-2 text-lg backdrop-blur-sm bg-white/20 dark:bg-black/30 border-white/30 dark:border-gray-600">
                   {course.level} Level
                 </Badge>
-                <Badge variant="outline" className="px-4 py-2 text-lg backdrop-blur-sm bg-white/20 border-white/30">
+                <Badge variant="outline" className="px-4 py-2 text-lg backdrop-blur-sm bg-white/20 dark:bg-black/30 border-white/30 dark:border-gray-600">
                   {course.estimatedTime} • {course.totalModules} modules
                 </Badge>
-                <Badge variant="outline" className="px-4 py-2 text-lg backdrop-blur-sm bg-white/20 border-white/30">
+                <Badge variant="outline" className="px-4 py-2 text-lg backdrop-blur-sm bg-white/20 dark:bg-black/30 border-white/30 dark:border-gray-600">
                   ⭐ {course.rating} ({course.students} students)
                 </Badge>
               </div>
@@ -159,7 +253,7 @@ export default function CourseDetailPage() {
               </TabsList>
 
               <TabsContent value="overview" className="space-y-6">
-                <Card className="backdrop-blur-xl bg-white/20 dark:bg-gray-900/20 border-white/30 dark:border-gray-700/30 shadow-xl">
+                <Card className="backdrop-blur-xl bg-white/20 dark:bg-black/30 border-white/30 dark:border-gray-700/30 shadow-xl">
                   <CardHeader>
                     <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white">About This Course</CardTitle>
                   </CardHeader>
@@ -205,7 +299,7 @@ export default function CourseDetailPage() {
               </TabsContent>
 
               <TabsContent value="curriculum" className="space-y-6">
-                <Card className="backdrop-blur-xl bg-white/20 dark:bg-gray-900/20 border-white/30 dark:border-gray-700/30 shadow-xl">
+                <Card className="backdrop-blur-xl bg-white/20 dark:bg-black/30 border-white/30 dark:border-gray-700/30 shadow-xl">
                   <CardHeader>
                     <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white">Course Curriculum</CardTitle>
                   </CardHeader>
@@ -263,7 +357,7 @@ export default function CourseDetailPage() {
               </TabsContent>
 
               <TabsContent value="instructor" className="space-y-6">
-                <Card className="backdrop-blur-xl bg-white/20 dark:bg-gray-900/20 border-white/30 dark:border-gray-700/30 shadow-xl">
+                <Card className="backdrop-blur-xl bg-white/20 dark:bg-black/30 border-white/30 dark:border-gray-700/30 shadow-xl">
                   <CardHeader>
                     <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white">Meet Your Instructor</CardTitle>
                   </CardHeader>
@@ -296,7 +390,7 @@ export default function CourseDetailPage() {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Current Module */}
-            <Card className="backdrop-blur-xl bg-white/20 dark:bg-gray-900/20 border-white/30 dark:border-gray-700/30 shadow-xl">
+            <Card className="backdrop-blur-xl bg-white/20 dark:bg-black/30 border-white/30 dark:border-gray-700/30 shadow-xl">
               <CardHeader>
                 <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">Current Module</CardTitle>
               </CardHeader>
@@ -332,7 +426,7 @@ export default function CourseDetailPage() {
             </Card>
 
             {/* Course Stats */}
-            <Card className="backdrop-blur-xl bg-white/20 dark:bg-gray-900/20 border-white/30 dark:border-gray-700/30 shadow-xl">
+            <Card className="backdrop-blur-xl bg-white/20 dark:bg-black/30 border-white/30 dark:border-gray-700/30 shadow-xl">
               <CardHeader>
                 <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">Course Statistics</CardTitle>
               </CardHeader>
@@ -359,7 +453,7 @@ export default function CourseDetailPage() {
             </Card>
 
             {/* Quick Actions */}
-            <Card className="backdrop-blur-xl bg-white/20 dark:bg-gray-900/20 border-white/30 dark:border-gray-700/30 shadow-xl">
+            <Card className="backdrop-blur-xl bg-white/20 dark:bg-black/30 border-white/30 dark:border-gray-700/30 shadow-xl">
               <CardHeader>
                 <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">Quick Actions</CardTitle>
               </CardHeader>

@@ -223,9 +223,9 @@ export default function LearningPage() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { title: 'AI Fundamentals', instructor: 'Dr. Sarah Chen', rating: 4.9, students: 2341, price: '$99', courseId: 'ai-fundamentals' },
-              { title: 'Business Strategy', instructor: 'Prof. Michael Brown', rating: 4.8, students: 1892, price: '$149', courseId: 'business-strategy' },
-              { title: 'UX Design Mastery', instructor: 'Lisa Rodriguez', rating: 4.7, students: 1654, price: '$129', courseId: 'ux-design' }
+              { title: 'AI Fundamentals', instructor: 'Dr. Sarah Chen', rating: 4.9, students: 2341, price: '₹7,999', courseId: 'ai-fundamentals' },
+              { title: 'Business Strategy', instructor: 'Prof. Michael Brown', rating: 4.8, students: 1892, price: '₹12,499', courseId: 'business-strategy' },
+              { title: 'UX Design Mastery', instructor: 'Lisa Rodriguez', rating: 4.7, students: 1654, price: '₹10,799', courseId: 'ux-design' }
             ].map((course, index) => (
               <motion.div
                 key={index}

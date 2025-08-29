@@ -53,8 +53,16 @@ function ProfileContent() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="flex items-center space-x-4">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-                    <User className="w-10 h-10 text-white" />
+                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center overflow-hidden">
+                    {user?.photoURL ? (
+                      <img 
+                        src={user.photoURL} 
+                        alt={user.displayName || 'User'} 
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <User className="w-10 h-10 text-white" />
+                    )}
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white">

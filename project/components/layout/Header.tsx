@@ -136,42 +136,73 @@ export function Header() {
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-9 w-9 rounded-full">
-                  <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-                    <span className="text-white text-sm font-medium">
-                      {user.displayName?.charAt(0) || user.email?.charAt(0) || 'U'}
-                    </span>
+                <Button variant="ghost" className="relative h-10 w-10 rounded-full hover:bg-white/10 transition-all duration-200">
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center overflow-hidden shadow-lg ring-2 ring-white/20 hover:ring-white/40 transition-all duration-200">
+                    {user.photoURL ? (
+                      <img 
+                        src={user.photoURL} 
+                        alt={user.displayName || 'User'} 
+                        className="w-10 h-10 object-cover rounded-full"
+                      />
+                    ) : (
+                      <div className="w-10 h-10 flex items-center justify-center">
+                        <span className="text-white text-lg font-bold">
+                          {user.displayName?.charAt(0) || user.email?.charAt(0) || 'U'}
+                        </span>
+                      </div>
+                    )}
                   </div>
+                  {/* Online indicator */}
+                  <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-400 border-2 border-white rounded-full"></div>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56" align="end" forceMount>
-                <DropdownMenuLabel className="font-normal">
-                  <div className="flex flex-col space-y-1">
-                    <p className="text-sm font-medium leading-none">
-                      {user.displayName || 'User'}
-                    </p>
-                    <p className="text-xs leading-none text-muted-foreground">
-                      {user.email}
-                    </p>
+              <DropdownMenuContent className="w-64 backdrop-blur-xl bg-white/95 dark:bg-gray-900/95 border-white/20 dark:border-gray-700/30 shadow-2xl" align="end" forceMount>
+                <DropdownMenuLabel className="font-normal p-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center overflow-hidden shadow-lg ring-2 ring-white/20">
+                      {user.photoURL ? (
+                        <img 
+                          src={user.photoURL} 
+                          alt={user.displayName || 'User'} 
+                          className="w-12 h-12 object-cover rounded-full"
+                        />
+                      ) : (
+                        <span className="text-white text-xl font-bold">
+                          {user.displayName?.charAt(0) || user.email?.charAt(0) || 'U'}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex flex-col space-y-1">
+                      <p className="text-sm font-semibold leading-none text-gray-900 dark:text-white">
+                        {user.displayName || 'User'}
+                      </p>
+                      <p className="text-xs leading-none text-muted-foreground">
+                        {user.email}
+                      </p>
+                      <div className="flex items-center space-x-1 mt-1">
+                        <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                        <span className="text-xs text-green-600 dark:text-green-400">Online</span>
+                      </div>
+                    </div>
                   </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link href="/dashboard" className="cursor-pointer">
-                    <User className="mr-2 h-4 w-4" />
-                    <span>Dashboard</span>
+                <DropdownMenuItem asChild className="p-3 hover:bg-blue-50 dark:hover:bg-blue-950/20 transition-colors">
+                  <Link href="/dashboard" className="cursor-pointer flex items-center">
+                    <User className="mr-3 h-5 w-5 text-blue-600" />
+                    <span className="font-medium">Dashboard</span>
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/profile" className="cursor-pointer">
-                    <Settings className="mr-2 h-4 w-4" />
-                    <span>Settings</span>
+                <DropdownMenuItem asChild className="p-3 hover:bg-purple-50 dark:hover:bg-purple-950/20 transition-colors">
+                  <Link href="/profile" className="cursor-pointer flex items-center">
+                    <Settings className="mr-3 h-5 w-5 text-purple-600" />
+                    <span className="font-medium">Profile Settings</span>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
-                  <LogOut className="mr-2 h-4 w-4" />
-                  <span>Log out</span>
+                <DropdownMenuItem onClick={handleLogout} className="cursor-pointer p-3 hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors text-red-600 dark:text-red-400">
+                  <LogOut className="mr-3 h-5 w-5" />
+                  <span className="font-medium">Sign Out</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
