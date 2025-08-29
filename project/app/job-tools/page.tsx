@@ -15,6 +15,7 @@ import {
   TrendingUp,
   ExternalLink
 } from 'lucide-react';
+import Link from 'next/link';
 
 export default function JobTools() {
   const [activeTab, setActiveTab] = useState('resume');
@@ -71,14 +72,10 @@ export default function JobTools() {
               <TabsTrigger 
                 key={tool.id} 
                 value={tool.id}
-                disabled={tool.status === 'coming-soon'}
                 className="flex items-center space-x-2"
               >
                 <Icon size={16} />
                 <span className="hidden sm:inline">{tool.title}</span>
-                {tool.status === 'coming-soon' && (
-                  <Badge variant="secondary" className="ml-1 text-xs">Soon</Badge>
-                )}
               </TabsTrigger>
             );
           })}
@@ -101,13 +98,10 @@ export default function JobTools() {
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-teal-500 rounded-full mx-auto flex items-center justify-center">
                   <PenTool className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold">Coming Soon</h3>
-                <p className="text-muted-foreground">
-                  AI-powered cover letter generation tailored to specific job postings and your profile.
-                </p>
-                <Button variant="outline">
-                  <TrendingUp className="w-4 h-4 mr-2" />
-                  Join Waitlist
+                <h3 className="text-xl font-semibold">Open Cover Letter Writer</h3>
+                <p className="text-muted-foreground">AI-powered cover letter generation tailored to specific job postings and your profile.</p>
+                <Button asChild>
+                  <Link href="/job-tools/cover-letter">Open</Link>
                 </Button>
               </div>
             </CardContent>
@@ -127,13 +121,10 @@ export default function JobTools() {
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-teal-500 rounded-full mx-auto flex items-center justify-center">
                   <Search className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold">Coming Soon</h3>
-                <p className="text-muted-foreground">
-                  AI-powered job matching across multiple platforms with personalized recommendations.
-                </p>
-                <Button variant="outline">
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  Learn More
+                <h3 className="text-xl font-semibold">Open Smart 3D Matching</h3>
+                <p className="text-muted-foreground">AI-powered job matching across multiple platforms with personalized recommendations.</p>
+                <Button asChild>
+                  <Link href="/job-tools/smart-matching">Open</Link>
                 </Button>
               </div>
             </CardContent>

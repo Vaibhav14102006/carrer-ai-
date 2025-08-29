@@ -39,7 +39,7 @@ export default function Community() {
       rating: 4.9,
       sessions: 127,
       expertise: ['Machine Learning', 'Career Transition', 'Leadership'],
-      price: '$150/hour',
+      price: '₹150/hour',
       image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150'
     },
     {
@@ -49,7 +49,7 @@ export default function Community() {
       rating: 4.8,
       sessions: 89,
       expertise: ['Product Strategy', 'Team Management', 'Agile'],
-      price: '$120/hour',
+      price: '₹120/hour',
       image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150'
     },
     {
@@ -59,7 +59,7 @@ export default function Community() {
       rating: 5.0,
       sessions: 156,
       expertise: ['Design Systems', 'User Research', 'Career Growth'],
-      price: '$180/hour',
+      price: '₹180/hour',
       image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150'
     }
   ];

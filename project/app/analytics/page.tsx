@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
@@ -62,7 +63,7 @@ export default function Analytics() {
     },
     {
       title: 'Salary Forecast',
-      value: '$95K',
+      value: '₹95K',
       change: '+12%',
       description: 'Projected salary in 12 months',
       icon: DollarSign,
@@ -119,13 +120,11 @@ export default function Analytics() {
   };
 
   const handleViewCalendar = () => {
-    // Open calendar view modal or navigate to calendar page
-    alert('Calendar view will be implemented here. This would show your achievement timeline and scheduled activities.');
+    window.location.href = '/calendar';
   };
 
   const handleSetNewGoals = () => {
-    // Open goal setting modal
-    alert('Goal setting will be implemented here. This would allow you to set new career and skill development goals.');
+    window.location.href = '/goals/new';
   };
 
   return (
@@ -180,6 +179,55 @@ export default function Analytics() {
                 </motion.div>
               );
             })}
+          </div>
+
+          {/* Calendar & Activity Snapshot */}
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card className="border-0 shadow-lg">
+              <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20">
+                <CardTitle className="text-purple-900 dark:text-purple-100">Upcoming Deadlines</CardTitle>
+              </CardHeader>
+              <CardContent className="p-6 space-y-3">
+                {[{t:'Python Course Deadline',d:'Dec 20, 2024'},{t:'Career Assessment',d:'Dec 25, 2024'},{t:'Networking Event',d:'Dec 28, 2024'}].map(item => (
+                  <div key={item.t} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+                    <span className="text-sm font-medium">{item.t}</span>
+                    <Badge variant="outline">{item.d}</Badge>
+                  </div>
+                ))}
+                <Button variant="outline" asChild className="w-full mt-2">
+                  <Link href="/events">View All Events</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg">
+              <CardHeader className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-950/20 dark:to-orange-950/20">
+                <CardTitle className="text-orange-900 dark:text-orange-100">Recent Activity</CardTitle>
+              </CardHeader>
+              <CardContent className="p-6 space-y-3">
+                {["Completed Career Interest Survey","Earned Python Programming Badge","Updated resume optimization"].map(a => (
+                  <div key={a} className="p-3 bg-muted/50 rounded-lg text-sm">{a}</div>
+                ))}
+                <Button variant="outline" asChild className="w-full mt-2">
+                  <Link href="/recent-activity">View Activity</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg">
+              <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20">
+                <CardTitle className="text-green-900 dark:text-green-100">Set New Goals</CardTitle>
+              </CardHeader>
+              <CardContent className="p-6 space-y-4">
+                <p className="text-sm text-muted-foreground">Create and track new learning goals.</p>
+                <Button className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white" asChild>
+                  <Link href="/goals/new">Create Goal</Link>
+                </Button>
+                <Button variant="outline" className="w-full" asChild>
+                  <Link href="/calendar">View Calendar</Link>
+                </Button>
+              </CardContent>
+            </Card>
           </div>
 
           {/* Career Health Chart */}

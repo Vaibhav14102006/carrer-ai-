@@ -1,5 +1,18 @@
 'use client';
 
+import { ResumeOptimizer } from '@/components/job-tools/ResumeOptimizer';
+
+export default function ResumeBuilderPage() {
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl md:text-4xl font-bold mb-6">Resume Builder</h1>
+      <ResumeOptimizer />
+    </div>
+  );
+}
+
+'use client';
+
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';

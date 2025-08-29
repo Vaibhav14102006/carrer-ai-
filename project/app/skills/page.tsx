@@ -97,8 +97,8 @@ function SkillsContent() {
     }
   };
 
-  const handleViewBadgeDetails = (badgeName: string) => {
-    router.push(`/badges/${badgeName.toLowerCase().replace(/\s+/g, '-')}`);
+  const handleViewBadgeDetails = (_badgeName: string) => {
+    // view-only; do nothing on click
   };
 
   return (
